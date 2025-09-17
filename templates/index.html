@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Classifier</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: #f0f2f5; color: #1c1e21; text-align: center; margin: 0; padding: 20px; }
+        .container { max-width: 600px; margin: 40px auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+        h1 { color: #1877f2; }
+        form { margin: 20px 0; }
+        input[type="file"] { border: 1px solid #ddd; padding: 10px; border-radius: 6px; width: calc(100% - 22px); }
+        input[type="submit"] { background-color: #1877f2; color: white; border: none; padding: 12px 25px; border-radius: 6px; cursor: pointer; font-size: 16px; margin-top: 15px; font-weight: bold; }
+        input[type="submit"]:hover { background-color: #166fe5; }
+        .result { margin-top: 30px; }
+        .result img { max-width: 100%; height: auto; border-radius: 8px; margin-bottom: 20px; border: 1px solid #ddd; }
+        .result ul { list-style-type: none; padding: 0; }
+        .result li { background: #e9f2ff; margin: 8px 0; padding: 12px; border-radius: 6px; font-size: 1.1em; color: #1c1e21; }
+        .error { color: #fa383e; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🤖 AI Image Classifier</h1>
+        <p>Upload an image to see what MobileNetV2 thinks it is!</p>
+        <form method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <br>
+            <input type="submit" value="Classify Image">
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if predictions %}
+        <div class="result">
+            <h2>Top 3 Predictions:</h2>
+            <img src="{{ user_image }}" alt="Uploaded Image">
+            <ul>
+                {% for prediction in predictions %}
+                    <li>{{ prediction }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
