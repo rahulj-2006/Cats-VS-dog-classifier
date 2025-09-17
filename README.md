@@ -50,4 +50,14 @@ Follow these steps to get the project running on your local machine.
 Clone this repository to your local machine using git:
 
 ```bash
-git clone [https://github.com/rahulj-2006/Cats-VS-dog-classifier.git](https://github.com/rahulj-2006/Cats-VS-dog-classifier.git)
+git clone https://github.com/rahulj-2006/Cats-VS-dog-classifier.git
+cd Cats-VS-dog-classifier
+```
+Install the required packages
+```
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+
+
